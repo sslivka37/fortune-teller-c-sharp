@@ -8,56 +8,48 @@ namespace FortuneTellerCSharp
         {
             Console.WriteLine("Welcome to the Fortune Teller Application!");
 
-            QuestionAsker FortuneAsker = new QuestionAsker();
+            QuestionAsker fortuneAsker = new QuestionAsker();
+            AnswerChecker fortuneChecker = new AnswerChecker();
 
-            FortuneAsker.AskFirstName();
-            string firstName = Console.ReadLine();
+            fortuneAsker.AskFirstName();
+            fortuneAsker.FirstName = Console.ReadLine();
+            
+            
 
-            FortuneAsker.AskLastName();
-            string lastName = Console.ReadLine();
+            fortuneAsker.AskLastName();
+            fortuneAsker.LastName = Console.ReadLine();
 
-            FortuneAsker.AskAge();
+            fortuneAsker.AskAge();
             string ageInput = Console.ReadLine();
             int ageNumber;
-            Int32.TryParse(ageInput, out ageNumber);
+            fortuneAsker.AgeNumber = Int32.TryParse(ageInput, out ageNumber);
 
-            FortuneAsker.AskBirthMonthNumber();
+            fortuneAsker.AskBirthMonthNumber();
             string birthInput = Console.ReadLine();
             int birthNumber;
-            Int32.TryParse(birthInput, out birthNumber);
+            fortuneAsker.BirthMonth = Int32.TryParse(birthInput, out birthNumber);
 
-            string colorInput;
+            //maybe see how to do this
             do
             {
-                FortuneAsker.AskFavoriteColor();
-                colorInput = Console.ReadLine();
-                if (colorInput.Equals("help", StringComparison.InvariantCultureIgnoreCase))
+                fortuneAsker.AskFavoriteColor();
+                fortuneAsker.FavoriteColor = Console.ReadLine();
+                if (fortuneAsker.FavoriteColor.Equals("help", StringComparison.InvariantCultureIgnoreCase))
                 {
                     Console.WriteLine("The ROYGBIV colors are Red, Orange, Green, Blue, Indigo, and Violet.");
                 }
-            } while (colorInput.Equals("help", StringComparison.InvariantCultureIgnoreCase));
+            } while (fortuneAsker.FavoriteColor.Equals("help", StringComparison.InvariantCultureIgnoreCase));
 
-            FortuneAsker.AskNumberOfSiblings();
+            fortuneAsker.AskNumberOfSiblings();
             string siblingsInput = Console.ReadLine();
             int siblingsNumber;
-            Int32.TryParse(siblingsInput, out siblingsNumber);
+            fortuneAsker.SiblingsNumber = Int32.TryParse(siblingsInput, out siblingsNumber);
 
-            //declaring the variables to be used later in the program
-            string vacationSiblings;
-            string carColor;
-            int retirementYears;
-            int bankBalance;
+                    
 
             //retirement based on age
-
-            if (ageNumber % 2 == 1)
-            {
-                retirementYears = 30;
-            }
-            else
-            {
-                retirementYears = 100;
-            }
+            fortuneChecker.checkRetirmentYears();
+           
 
             //bank balance based on birth month
 
@@ -177,7 +169,7 @@ namespace FortuneTellerCSharp
             }
 
             //the final concatenation
-            Console.WriteLine(firstName + " " + lastName + " will retire in " + retirementYears + " years, with $" + bankBalance + " in their bank account, and will have a vacation home in " + vacationSiblings + ", and will drive a " + carColor + ".");
+            Console.WriteLine(fortuneAsker.FirstName + " " + lastName + " will retire in " + retirementYears + " years, with $" + bankBalance + " in their bank account, and will have a vacation home in " + vacationSiblings + ", and will drive a " + carColor + ".");
 
         }
 
