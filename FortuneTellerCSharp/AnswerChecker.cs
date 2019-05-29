@@ -38,7 +38,7 @@ namespace FortuneTellerCSharp
 
         //bank balance based on birth month
 
-        //refactor to reduce code, replaced switch with if/else conditional
+        //refactored to reduce code, replaced switch with if/else conditional
 
         public void CheckBankBalance()
         {
@@ -59,6 +59,7 @@ namespace FortuneTellerCSharp
         }
 
             //vacation spot based on number of siblings
+            //refactor to bump out if negative integer, then continue as switch
 
             public void CheckVacationSpot()
             {
