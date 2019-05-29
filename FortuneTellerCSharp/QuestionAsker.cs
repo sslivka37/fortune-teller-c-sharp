@@ -13,7 +13,9 @@ namespace FortuneTellerCSharp
         public int BirthMonth { get; set; }
         public string FavoriteColor { get; set; }
         public int SiblingsNumber { get; set; }
-       
+
+        
+
 
 
         public void AskFirstName()

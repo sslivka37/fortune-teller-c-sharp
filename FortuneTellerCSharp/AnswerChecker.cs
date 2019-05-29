@@ -90,34 +90,36 @@ namespace FortuneTellerCSharp
         
 
         //car driven based on favorite color
+        //refactored to add temporary variable to lower case, removed all of the checking for equality ignore case
 
         public void CheckCarColor()
         {
-            if (_fortuneAsker.FavoriteColor.Equals("red", StringComparison.InvariantCultureIgnoreCase))
+            string favoriteColorLowerCase = _fortuneAsker.FavoriteColor.ToLower();
+            if (favoriteColorLowerCase.Equals("red"))
             {
                 CarColor = "Mustang";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("orange", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("orange"))
             {
                 CarColor = "Mercedes";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("yellow", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("yellow"))
             {
                 CarColor = "Subaru";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("green", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("green"))
             {
                 CarColor = "Honda";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("blue", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("blue"))
             {
                 CarColor = "Toyota";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("indigo", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("indigo"))
             {
                 CarColor = "Ford";
             }
-            else if (_fortuneAsker.FavoriteColor.Equals("violet", StringComparison.InvariantCultureIgnoreCase))
+            else if (favoriteColorLowerCase.Equals("violet"))
             {
                 CarColor = "Tesla";
             }

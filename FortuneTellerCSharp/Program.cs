@@ -19,35 +19,30 @@ namespace FortuneTellerCSharp
             fortuneAsker.AskLastName();
             fortuneAsker.LastName = Console.ReadLine();
 
-            //if person replies with non-number, inform them to choose a number and try again Try parse?
+            
+            //refactor to have a method that checks for int and loops
 
-            //fortuneAsker.AskAge();
-            //string ageInput = Console.ReadLine();
-            //int ageNumber;
-            //bool checkInt = Int32.TryParse(ageInput, out ageNumber);
             int ageNumber;
-            bool checkInt;
+            bool isInt;
             do
             {
-                fortuneAsker.AskAge();
-               string ageInput = Console.ReadLine();
-               checkInt = Int32.TryParse(ageInput, out ageNumber);
+               fortuneAsker.AskAge();
+               string input = Console.ReadLine();
+               isInt = Int32.TryParse(input, out ageNumber);
 
-                if (!checkInt)
+                if (!isInt)
                 {
                     Console.WriteLine("Entry invalid, please enter a number");
                 }
-                else
-                {
-                    fortuneAsker.AgeNumber = int.Parse(ageInput);
-                }
-            } while (!checkInt);
+               
+            } while (!isInt);
 
+            fortuneAsker.AgeNumber = ageNumber;
 
             fortuneAsker.AskBirthMonthNumber();
             fortuneAsker.BirthMonth = int.Parse(Console.ReadLine());
 
-            //maybe see how to do this
+            
             do
             {
                 fortuneAsker.AskFavoriteColor();
@@ -81,6 +76,7 @@ namespace FortuneTellerCSharp
             //the final concatenation
             Console.WriteLine(fortuneAsker.FirstName + " " + fortuneAsker.LastName + " will retire in " + fortuneChecker.RetirementYears + " years, with $" + fortuneChecker.BankBalance + " in their bank account, will have a vacation home in " + fortuneChecker.VacationSiblings + ", and will drive a " + fortuneChecker.CarColor + ".");
 
+            //try to use string.Format and interpolated strings
         }
 
     }
