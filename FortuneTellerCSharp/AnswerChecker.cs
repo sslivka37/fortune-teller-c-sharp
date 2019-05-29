@@ -13,19 +13,20 @@ namespace FortuneTellerCSharp
         public int RetirementYears { get; set; }
         public int BankBalance { get; set; }
 
-              
-        
+        public int intInput { get; set; }
+
 
         public AnswerChecker(QuestionAsker fortuneAsker)
         {
             this._fortuneAsker = fortuneAsker;
         }
 
+       
         //retirement based on age
 
         public void CheckRetirmentYears()
         {
-             if (_fortuneAsker.AgeNumber % 2 == 1)
+            if (_fortuneAsker.AgeNumber % 2 == 1)
             {
                 RetirementYears = 30;
             }
@@ -37,97 +38,61 @@ namespace FortuneTellerCSharp
 
         //bank balance based on birth month
 
+        //refactor to reduce code, replaced switch with if/else conditional
+
         public void CheckBankBalance()
         {
-            switch (_fortuneAsker.BirthMonth)
+
+            if (_fortuneAsker.BirthMonth > 0 && _fortuneAsker.BirthMonth <= 4)
             {
-                case 1:
-                    BankBalance = 100;
-                    break;
-
-                case 2:
-                    BankBalance = 100;
-                    break;
-
-                case 3:
-                    BankBalance = 100;
-                    break;
-
-                case 4:
-                    BankBalance = 100;
-                    break;
-
-                case 5:
-                    BankBalance = 1337;
-                    break;
-
-                case 6:
-                    BankBalance = 1337;
-                    break;
-
-                case 7:
-                    BankBalance = 1337;
-                    break;
-
-                case 8:
-                    BankBalance = 1337;
-                    break;
-                case 9:
-                    BankBalance = 1000000;
-                    break;
-
-                case 10:
-                    BankBalance = 1000000;
-                    break;
-
-                case 11:
-                    BankBalance = 1000000;
-                    break;
-                case 12:
-                    BankBalance = 1000000;
-                    break;
-
-                default:
-                    BankBalance = 0;
-                    break;
+                BankBalance = 100;
+            }
+            else if (_fortuneAsker.BirthMonth >= 5 && _fortuneAsker.BirthMonth <= 8)
+            {
+                BankBalance = 1337;
+            }
+            else if (_fortuneAsker.BirthMonth >= 9 && _fortuneAsker.BirthMonth <= 12)
+            {
+                BankBalance = 1000000;
             }
 
         }
 
-        //vacation spot based on number of siblings
+            //vacation spot based on number of siblings
 
-        public void CheckVacationSpot()
+            public void CheckVacationSpot()
             {
-             if (_fortuneAsker.SiblingsNumber < 0)
-            {
-                VacationSiblings = "Antarctica";
+                if (_fortuneAsker.SiblingsNumber < 0)
+                {
+                    VacationSiblings = "Antarctica";
+                }
+                else if (_fortuneAsker.SiblingsNumber == 0)
+                {
+                    VacationSiblings = "Hawaii";
+                }
+                else if (_fortuneAsker.SiblingsNumber == 1)
+                {
+                    VacationSiblings = "Malibu";
+                }
+                else if (_fortuneAsker.SiblingsNumber == 2)
+                {
+                    VacationSiblings = "London";
+                }
+                else if (_fortuneAsker.SiblingsNumber == 3)
+                {
+                    VacationSiblings = "New Zealand";
+                }
+                else
+                {
+                    VacationSiblings = "Denver";
+                }
             }
-            else if (_fortuneAsker.SiblingsNumber == 0)
-            {
-                VacationSiblings = "Hawaii";
-            }
-            else if (_fortuneAsker.SiblingsNumber == 1)
-            {
-                VacationSiblings = "Malibu";
-            }
-            else if (_fortuneAsker.SiblingsNumber == 2)
-            {
-                VacationSiblings = "London";
-            }
-            else if (_fortuneAsker.SiblingsNumber == 3)
-            {
-                VacationSiblings = "New Zealand";
-            }
-            else
-            {
-                VacationSiblings = "Denver";
-            }
-            }
+        
 
         //car driven based on favorite color
 
         public void CheckCarColor()
-            {
+        {
             if (_fortuneAsker.FavoriteColor.Equals("red", StringComparison.InvariantCultureIgnoreCase))
             {
                 CarColor = "Mustang";
@@ -161,6 +126,6 @@ namespace FortuneTellerCSharp
                 CarColor = "beat-up scooter";
             }
 
-            }               
+        }
     }
 }
