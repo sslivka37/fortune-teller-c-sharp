@@ -9,6 +9,10 @@ namespace FortuneTellerCSharp
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public int AgeNumber { get; set; }
+        public int BirthMonth { get; set; }
+        public string FavoriteColor { get; set; }
+        public int SiblingsNumber { get; set; }
        
 
 
